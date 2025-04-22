@@ -79,10 +79,16 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
           
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {imageUrl.map((_, index) => (
-              <div 
+              <button 
                 key={index} 
-                className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`}
-                onClick={() => setCurrentSlide(index)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === currentSlide ? 'w-4 bg-white' : 'w-1.5 bg-white/60 hover:bg-white/80'
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentSlide(index);
+                }}
+                aria-label={`Aller à l'image ${index + 1}`}
               />
             ))}
           </div>
