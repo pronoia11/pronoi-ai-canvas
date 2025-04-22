@@ -1,10 +1,13 @@
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { Instagram, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,19 +22,48 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
     
-    toast({
-      title: "Message envoyé!",
-      description: "Nous vous contacterons très prochainement.",
-    });
+    // Remplacez ces valeurs par vos identifiants EmailJS
+    const serviceId = 'YOUR_SERVICE_ID';
+    const templateId = 'YOUR_TEMPLATE_ID';
+    const publicKey = 'YOUR_PUBLIC_KEY';
     
-    setFormData({
-      name: "",
-      email: "",
-      projectType: "",
-      message: ""
-    });
+    // Préparation des paramètres pour EmailJS
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      project_type: formData.projectType,
+      message: formData.message
+    };
+    
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        toast({
+          title: "Message envoyé!",
+          description: "Nous vous contacterons très prochainement.",
+        });
+        
+        // Réinitialiser le formulaire
+        setFormData({
+          name: "",
+          email: "",
+          projectType: "",
+          message: ""
+        });
+      })
+      .catch((err) => {
+        console.error('ERREUR:', err);
+        toast({
+          title: "Erreur",
+          description: "Une erreur s'est produite. Veuillez réessayer plus tard.",
+          variant: "destructive"
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -103,7 +135,7 @@ const Contact = () => {
           </div>
           
           <div>
-            <form onSubmit={handleSubmit} className="bg-white/80 p-6 rounded-lg shadow-md">
+            <form ref={formRef} onSubmit={handleSubmit} className="bg-white/80 p-6 rounded-lg shadow-md">
               <div className="grid grid-cols-1 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-sm font-medium text-[#2C2C2C]">
@@ -172,10 +204,23 @@ const Contact = () => {
                 
                 <button
                   type="submit"
-                  className="btn flex items-center justify-center bg-[#1E90FF] hover:bg-[#1E90FF]/90 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)] text-white rounded-full py-3 px-6 transition-all"
+                  disabled={isSubmitting}
+                  className="btn flex items-center justify-center bg-[#1E90FF] hover:bg-[#1E90FF]/90 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)] text-white rounded-full py-3 px-6 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <Send size={18} className="mr-2" />
-                  Envoyer
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} className="mr-2" />
+                      Envoyer
+                    </>
+                  )}
                 </button>
               </div>
             </form>
