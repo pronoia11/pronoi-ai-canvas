@@ -19,7 +19,6 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Convert YouTube URL to embed URL if needed
   const getEmbedUrl = (url: string) => {
     if (url.includes('youtu.be') || url.includes('youtube.com')) {
       const videoId = url.includes('youtu.be') 
@@ -85,16 +84,16 @@ const Services = () => {
       title: "Photos produits",
       description: "Des photos de qualité pour votre merchandising.",
       imageUrl: [
-        "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+        "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
         "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475",
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
         "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
         "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
-        "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
       ],
     },
     {
