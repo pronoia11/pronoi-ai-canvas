@@ -51,11 +51,6 @@ const Services = () => {
       description: "Mettez en avant votre merch de façon différente.",
       imageUrl: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
       videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-very-close-shot-of-the-leaves-of-a-plant-wet-18310-large.mp4"
-    },
-    {
-      title: "Plans d'inserts",
-      description: "Visuels sur mesure pour vos clips.",
-      imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -76,40 +71,50 @@ const Services = () => {
       description: "Animations de 8 secondes pour vos titres sur Spotify.",
       imageUrl: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
       videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-galaxy-in-motion-acting-like-water-30734-large.mp4"
+    },
+    {
+      title: "Plans d'inserts",
+      description: "Visuels sur mesure pour vos clips.",
+      imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   return (
     <section id="services" className="section bg-black">
       <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Nos prestations</h2>
-        <p className="text-lg text-white/70 mb-12 text-center max-w-3xl mx-auto">
-          Des solutions créatives pour valoriser votre univers musical
-        </p>
-
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold mb-6 text-center text-primary">Merchandising</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {merchandisingServices.map((service, index) => (
-              <ServiceCard
-                key={index}
-                {...service}
-                category="Merchandising"
-              />
-            ))}
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Nos prestations</h2>
+        
+        <div className="space-y-24">
+          {/* Merchandising Category */}
+          <div className="mb-12 scroll-mt-24" id="merchandising">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-primary">
+              Merchandising
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {merchandisingServices.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  {...service}
+                  category="Merchandising"
+                />
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h3 className="text-2xl font-bold mb-6 text-center text-primary">Clip</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clipServices.map((service, index) => (
-              <ServiceCard
-                key={index}
-                {...service}
-                category="Clip"
-              />
-            ))}
+          {/* Clip Category */}
+          <div className="scroll-mt-24" id="clip">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-primary">
+              Clip
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {clipServices.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  {...service}
+                  category="Clip"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -118,4 +123,3 @@ const Services = () => {
 };
 
 export default Services;
-
