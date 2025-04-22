@@ -1,0 +1,41 @@
+
+import { useEffect, useState } from "react";
+
+const Hero = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <section id="home" className="h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background video (placeholder) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black z-10"></div>
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
+      
+      <div 
+        className={`container relative z-20 text-center px-6 transition-all duration-1000 ${
+          isLoaded ? "opacity-100 transform-none" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          L'<span className="text-gradient glitch">IA</span> au service de votre <span className="text-gradient">imagination</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto">
+          Studio créatif spécialisé dans la génération de visuels et d'animations vidéo via l'intelligence artificielle.
+        </p>
+        <a href="#services" className="btn btn-primary">
+          Découvrir nos services
+          <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
