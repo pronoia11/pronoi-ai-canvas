@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 
@@ -12,6 +13,17 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Convert YouTube URL to embed URL if needed
+  const getEmbedUrl = (url: string) => {
+    if (url.includes('youtu.be') || url.includes('youtube.com')) {
+      const videoId = url.includes('youtu.be') 
+        ? url.split('youtu.be/')[1]
+        : url.split('v=')[1];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
+    }
+    return url;
+  };
+
   return (
     <div 
       className="portfolio-item relative rounded-lg overflow-hidden shadow-md"
@@ -20,13 +32,11 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
     >
       <AspectRatio ratio={16 / 9}>
         {videoUrl && isHovered ? (
-          <video 
-            src={videoUrl}
+          <iframe
+            src={getEmbedUrl(videoUrl)}
             className="h-full w-full object-cover"
-            autoPlay 
-            muted 
-            loop 
-            playsInline
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
           />
         ) : (
           <img 
