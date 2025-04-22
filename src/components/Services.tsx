@@ -19,7 +19,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
       const videoId = url.includes('youtu.be') 
         ? url.split('youtu.be/')[1]
         : url.split('v=')[1];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`;
     }
     return url;
   };
@@ -46,10 +46,10 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
           />
         )}
       </AspectRatio>
-      <div className={`absolute inset-0 bg-[#1E90FF]/10 flex flex-col justify-end p-4 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h3 className="text-xl font-bold mb-2 text-[#2C2C2C]">{title}</h3>
-        <p className="text-[#2C2C2C]/80 mb-2">{description}</p>
-        <span className="text-sm text-[#1E90FF] uppercase tracking-wider">{category}</span>
+      <div className={`absolute inset-0 bg-black/40 flex flex-col justify-end p-4 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+        <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+        <p className="text-white/90 mb-2">{description}</p>
+        <span className="text-sm text-white font-medium uppercase tracking-wider">{category}</span>
       </div>
     </div>
   );
