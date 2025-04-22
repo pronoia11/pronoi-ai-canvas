@@ -46,7 +46,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
           />
         )}
       </AspectRatio>
-      <div className="absolute inset-0 bg-[#1E90FF]/10 backdrop-blur-sm flex flex-col justify-end p-4 opacity-100">
+      <div className={`absolute inset-0 bg-[#1E90FF]/10 flex flex-col justify-end p-4 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
         <h3 className="text-xl font-bold mb-2 text-[#2C2C2C]">{title}</h3>
         <p className="text-[#2C2C2C]/80 mb-2">{description}</p>
         <span className="text-sm text-[#1E90FF] uppercase tracking-wider">{category}</span>
