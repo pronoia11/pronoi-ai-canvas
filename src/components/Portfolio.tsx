@@ -1,6 +1,9 @@
 
 import { useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { FileVideo, Image as ImageIcon } from "lucide-react";
 
 interface Project {
   id: number;
@@ -103,22 +106,38 @@ const Portfolio = () => {
           Découvrez nos réalisations pour des artistes de tous horizons
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="flex flex-wrap justify-center gap-8">
           {projects.map((project) => (
-            <div 
-              key={project.id}
-              onClick={() => openProject(project)}
-              className="portfolio-item cursor-pointer h-[350px] md:h-[450px]"
-            >
-              <img 
-                src={project.imageUrl} 
-                alt={project.artist} 
-                className="h-full w-full object-cover"
-              />
-              <div className="portfolio-overlay">
-                <h3 className="text-xl font-bold">{project.artist}</h3>
-              </div>
-            </div>
+            <HoverCard key={project.id}>
+              <HoverCardTrigger asChild>
+                <button
+                  onClick={() => openProject(project)}
+                  className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
+                >
+                  <Avatar className="w-24 h-24 border-2 border-primary/50">
+                    <AvatarImage src={project.imageUrl} alt={project.artist} />
+                    <AvatarFallback>{project.artist[0]}</AvatarFallback>
+                  </Avatar>
+                  <span className="font-medium text-white/90">{project.artist}</span>
+                </button>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80 bg-black/95 border border-white/10 text-white">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="font-medium mb-1">{project.artist}</h4>
+                    <p className="text-sm text-white/70">{project.description}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    {project.videos.length > 0 && (
+                      <FileVideo className="h-4 w-4 text-primary/80" />
+                    )}
+                    {project.images.length > 0 && (
+                      <ImageIcon className="h-4 w-4 text-primary/80" />
+                    )}
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           ))}
         </div>
 
@@ -131,7 +150,10 @@ const Portfolio = () => {
                 
                 {selectedProject.videos.length > 0 && (
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold mb-3">Vidéos</h3>
+                    <div className="flex items-center gap-2 mb-3">
+                      <FileVideo className="h-5 w-5 text-primary" />
+                      <h3 className="text-lg font-semibold">Vidéos</h3>
+                    </div>
                     <div className="grid grid-cols-1 gap-4">
                       {selectedProject.videos.map((video, index) => (
                         <div key={index} className="overflow-hidden rounded-lg">
@@ -151,7 +173,10 @@ const Portfolio = () => {
                 
                 {selectedProject.images.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Images</h3>
+                    <div className="flex items-center gap-2 mb-3">
+                      <ImageIcon className="h-5 w-5 text-primary" />
+                      <h3 className="text-lg font-semibold">Images</h3>
+                    </div>
                     <div className="relative">
                       <div className="overflow-hidden rounded-lg">
                         <img 
