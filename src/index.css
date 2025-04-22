@@ -7,23 +7,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 222 11% 17%;
 
-    --card: 0 0% 17%;
-    --card-foreground: 0 0% 100%;
+    --card: 213 30% 95%;
+    --card-foreground: 222 11% 17%;
 
-    --popover: 0 0% 17%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 213 30% 95%;
+    --popover-foreground: 222 11% 17%;
 
     --primary: 210 100% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 17%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 222 11% 17%;
 
-    --muted: 0 0% 25%;
-    --muted-foreground: 0 0% 88%;
+    --muted: 210 20% 90%;
+    --muted-foreground: 222 11% 30%;
 
     --accent: 210 100% 56%;
     --accent-foreground: 0 0% 100%;
@@ -31,8 +31,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 210 100% 56%;
 
     --radius: 0.5rem;
@@ -75,7 +75,7 @@
   }
   
   .btn-outline {
-    @apply border border-white/20 text-white hover:bg-white/10;
+    @apply border border-[#D0E8FF] text-[#2C2C2C] hover:bg-[#D0E8FF]/30;
   }
 }
 
@@ -85,7 +85,7 @@
   }
   
   .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   .portfolio-item {
@@ -102,7 +102,7 @@
   }
   
   .nav-link {
-    @apply relative py-2 px-1 text-white/70 hover:text-white transition-colors duration-200;
+    @apply relative py-2 px-1 transition-colors duration-200;
   }
   
   .nav-link::after {
@@ -155,6 +155,6 @@
   }
   
   .glass-panel {
-    @apply bg-black/40 backdrop-blur-sm border border-white/10;
+    @apply bg-white/40 backdrop-blur-sm border border-white/20 shadow-md;
   }
 }

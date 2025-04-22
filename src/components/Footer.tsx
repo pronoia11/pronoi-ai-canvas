@@ -3,30 +3,30 @@ import { Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black py-12 border-t border-white/10">
+    <footer className="bg-[#D0E8FF] py-12 border-t border-[#1E90FF]/10">
       <div className="container px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <div className="text-2xl font-bold font-poppins">PRONOÏA</div>
-            <p className="text-white/60 mt-2">L'IA au service de votre imagination.</p>
+            <div className="text-2xl font-bold font-poppins text-[#2C2C2C]">PRONOÏA</div>
+            <p className="text-[#2C2C2C]/70 mt-2">L'IA au service de votre imagination.</p>
           </div>
           
           <div className="flex flex-col items-center md:items-end">
             <div className="flex space-x-4 mb-4">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/pronoia_artist/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
+                className="text-[#2C2C2C]/70 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
               <a 
-                href="https://tiktok.com" 
+                href="https://www.tiktok.com/@prono.ia0" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
+                className="text-[#2C2C2C]/70 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
                 aria-label="TikTok"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,7 +38,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-            <div className="text-white/40 text-sm">
+            <div className="text-[#2C2C2C]/60 text-sm">
               <a href="#" className="hover:text-[#1E90FF] transition-colors">
                 Mentions légales
               </a>

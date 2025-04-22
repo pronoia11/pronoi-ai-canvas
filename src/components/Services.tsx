@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 interface ServiceCardProps {
@@ -14,7 +13,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
 
   return (
     <div 
-      className="portfolio-item relative aspect-video rounded-lg overflow-hidden"
+      className="portfolio-item relative aspect-video rounded-lg overflow-hidden shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -35,10 +34,10 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
           />
         )}
       </div>
-      <div className="absolute inset-0 glass-panel flex flex-col justify-end p-4 opacity-100">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-white/80 mb-2">{description}</p>
-        <span className="text-sm text-[#3AAFFF]/80 uppercase tracking-wider">{category}</span>
+      <div className="absolute inset-0 bg-[#1E90FF]/10 backdrop-blur-sm flex flex-col justify-end p-4 opacity-100">
+        <h3 className="text-xl font-bold mb-2 text-[#2C2C2C]">{title}</h3>
+        <p className="text-[#2C2C2C]/80 mb-2">{description}</p>
+        <span className="text-sm text-[#1E90FF] uppercase tracking-wider">{category}</span>
       </div>
     </div>
   );
@@ -93,14 +92,14 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section bg-gradient-to-b from-[#000000] to-[#2C2C2C]">
+    <section id="services" className="section bg-[#F5F5F5]">
       <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">Nos prestations</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#2C2C2C]">Nos prestations</h2>
         
         <div className="space-y-24">
           {/* Merchandising Category */}
           <div className="mb-12 scroll-mt-24" id="merchandising">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
               Merchandising
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -116,7 +115,7 @@ const Services = () => {
 
           {/* Clip Category */}
           <div className="mb-12 scroll-mt-24" id="clip">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
               Clip
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -132,7 +131,7 @@ const Services = () => {
           
           {/* Custom Projects Category */}
           <div className="scroll-mt-24" id="custom-projects">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
               Projets sur mesures
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-2xl mx-auto">
