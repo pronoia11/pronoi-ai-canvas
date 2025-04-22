@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { Instagram, Send } from 'lucide-react';
@@ -24,12 +23,10 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Remplacez ces valeurs par vos identifiants EmailJS
-    const serviceId = 'YOUR_SERVICE_ID';
-    const templateId = 'YOUR_TEMPLATE_ID';
-    const publicKey = 'YOUR_PUBLIC_KEY';
+    const serviceId = 'service_nqmtlqb';
+    const templateId = 'template_1jqruzb';
+    const publicKey = 't9Kp9C786P0ISTyKg';
     
-    // Préparation des paramètres pour EmailJS
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -45,7 +42,6 @@ const Contact = () => {
           description: "Nous vous contacterons très prochainement.",
         });
         
-        // Réinitialiser le formulaire
         setFormData({
           name: "",
           email: "",
