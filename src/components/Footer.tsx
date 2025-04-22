@@ -17,7 +17,7 @@ const Footer = () => {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-primary transition-colors"
+                className="text-white/60 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -26,7 +26,7 @@ const Footer = () => {
                 href="https://tiktok.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-primary transition-colors"
+                className="text-white/60 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
                 aria-label="TikTok"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,7 +39,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="text-white/40 text-sm">
-              <a href="#" className="hover:text-primary transition-colors">
+              <a href="#" className="hover:text-[#1E90FF] transition-colors">
                 Mentions légales
               </a>
               <span className="mx-2">|</span>

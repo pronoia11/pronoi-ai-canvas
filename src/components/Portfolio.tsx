@@ -99,8 +99,9 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="section bg-black/95">
-      <div className="container">
+    <section id="portfolio" className="section bg-gradient-to-b from-[#1A1A1A] to-[#222222] relative overflow-hidden">
+      <div className="absolute inset-0 bg-blue-900/10 backdrop-blur-[100px] opacity-20"></div>
+      <div className="container relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Portfolio</h2>
         <p className="text-lg text-white/70 mb-12 text-center max-w-3xl mx-auto">
           Découvrez nos réalisations pour des artistes de tous horizons
@@ -114,14 +115,14 @@ const Portfolio = () => {
                   onClick={() => openProject(project)}
                   className="group flex flex-col items-center gap-3 transition-transform hover:scale-105"
                 >
-                  <Avatar className="w-24 h-24 border-2 border-primary/50">
+                  <Avatar className="w-24 h-24 border-2 border-[#3AAFFF]/50 hover:border-[#3AAFFF] transition-colors">
                     <AvatarImage src={project.imageUrl} alt={project.artist} />
                     <AvatarFallback>{project.artist[0]}</AvatarFallback>
                   </Avatar>
                   <span className="font-medium text-white/90">{project.artist}</span>
                 </button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 bg-black/95 border border-white/10 text-white">
+              <HoverCardContent className="w-80 bg-[#222222]/90 border border-white/10 text-white">
                 <div className="flex justify-between items-start">
                   <div>
                     <h4 className="font-medium mb-1">{project.artist}</h4>
@@ -129,10 +130,10 @@ const Portfolio = () => {
                   </div>
                   <div className="flex gap-2">
                     {project.videos.length > 0 && (
-                      <FileVideo className="h-4 w-4 text-primary/80" />
+                      <FileVideo className="h-4 w-4 text-[#3AAFFF]/80" />
                     )}
                     {project.images.length > 0 && (
-                      <ImageIcon className="h-4 w-4 text-primary/80" />
+                      <ImageIcon className="h-4 w-4 text-[#3AAFFF]/80" />
                     )}
                   </div>
                 </div>
@@ -143,7 +144,7 @@ const Portfolio = () => {
 
         <Dialog open={!!selectedProject} onOpenChange={() => closeProject()}>
           {selectedProject && (
-            <DialogContent className="bg-black/95 border-gray-800 p-0 max-w-4xl w-[90vw]">
+            <DialogContent className="bg-[#222222]/95 border-gray-800 p-0 max-w-4xl w-[90vw] max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">{selectedProject.artist}</h2>
                 <p className="text-white/70 mb-6">{selectedProject.description}</p>
@@ -151,7 +152,7 @@ const Portfolio = () => {
                 {selectedProject.videos.length > 0 && (
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <FileVideo className="h-5 w-5 text-primary" />
+                      <FileVideo className="h-5 w-5 text-[#3AAFFF]" />
                       <h3 className="text-lg font-semibold">Vidéos</h3>
                     </div>
                     <div className="grid grid-cols-1 gap-4">
@@ -174,7 +175,7 @@ const Portfolio = () => {
                 {selectedProject.images.length > 0 && (
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <ImageIcon className="h-5 w-5 text-primary" />
+                      <ImageIcon className="h-5 w-5 text-[#3AAFFF]" />
                       <h3 className="text-lg font-semibold">Images</h3>
                     </div>
                     <div className="relative">
@@ -215,7 +216,7 @@ const Portfolio = () => {
                             key={index}
                             onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }}
                             className={`w-3 h-3 mx-1 rounded-full ${
-                              currentImageIndex === index ? "bg-primary" : "bg-gray-500"
+                              currentImageIndex === index ? "bg-[#3AAFFF]" : "bg-gray-500"
                             }`}
                           />
                         ))}

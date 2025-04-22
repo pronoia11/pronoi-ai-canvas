@@ -71,7 +71,7 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary/90 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)];
+    @apply bg-[#1E90FF] text-white hover:bg-[#1E90FF]/90 hover:shadow-[0_0_15px_rgba(30,144,255,0.5)];
   }
   
   .btn-outline {
@@ -81,7 +81,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#1E90FF] to-[#3AAFFF] bg-clip-text text-transparent;
   }
   
   .text-shadow {
@@ -93,12 +93,12 @@
   }
   
   .portfolio-overlay {
-    @apply absolute inset-0 bg-primary/0 flex flex-col justify-end p-4
+    @apply absolute inset-0 bg-[#1E90FF]/0 flex flex-col justify-end p-4
            transition-all duration-300 ease-in-out opacity-0;
   }
   
   .portfolio-item:hover .portfolio-overlay {
-    @apply bg-primary/30 opacity-100 backdrop-blur-sm;
+    @apply bg-[#1E90FF]/30 opacity-100 backdrop-blur-sm;
   }
   
   .nav-link {
@@ -107,7 +107,7 @@
   
   .nav-link::after {
     content: '';
-    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-[#1E90FF] transition-all duration-300;
   }
   
   .nav-link:hover::after {

@@ -6,7 +6,7 @@ interface ServiceCardProps {
   description: string;
   imageUrl: string;
   videoUrl?: string;
-  category: 'Merchandising' | 'Clip';
+  category: 'Merchandising' | 'Clip' | 'Projets sur mesures';
 }
 
 const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: ServiceCardProps) => {
@@ -14,7 +14,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
 
   return (
     <div 
-      className="portfolio-item h-[300px] md:h-[400px] relative"
+      className="portfolio-item relative aspect-video rounded-lg overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -38,7 +38,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
       <div className="absolute inset-0 glass-panel flex flex-col justify-end p-4 opacity-100">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-white/80 mb-2">{description}</p>
-        <span className="text-sm text-primary/80 uppercase tracking-wider">{category}</span>
+        <span className="text-sm text-[#3AAFFF]/80 uppercase tracking-wider">{category}</span>
       </div>
     </div>
   );
@@ -84,15 +84,23 @@ const Services = () => {
     }
   ];
 
+  const customServices = [
+    {
+      title: "Projet personnalisé",
+      description: "Une idée unique ? Contactez-nous pour un projet sur mesure.",
+      imageUrl: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
   return (
-    <section id="services" className="section bg-black">
+    <section id="services" className="section bg-gradient-to-b from-[#000000] to-[#2C2C2C]">
       <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Nos prestations</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">Nos prestations</h2>
         
         <div className="space-y-24">
           {/* Merchandising Category */}
           <div className="mb-12 scroll-mt-24" id="merchandising">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-primary">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
               Merchandising
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -107,8 +115,8 @@ const Services = () => {
           </div>
 
           {/* Clip Category */}
-          <div className="scroll-mt-24" id="clip">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-primary">
+          <div className="mb-12 scroll-mt-24" id="clip">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
               Clip
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -119,6 +127,23 @@ const Services = () => {
                   category="Clip"
                 />
               ))}
+            </div>
+          </div>
+          
+          {/* Custom Projects Category */}
+          <div className="scroll-mt-24" id="custom-projects">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#3AAFFF]">
+              Projets sur mesures
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <a href="#contact" className="col-span-full">
+                <ServiceCard
+                  title="Projet personnalisé"
+                  description="Une idée unique ? Contactez-nous pour un projet sur mesure adapté à vos besoins."
+                  imageUrl="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                  category="Projets sur mesures"
+                />
+              </a>
             </div>
           </div>
         </div>
