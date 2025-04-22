@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 
@@ -97,14 +96,6 @@ const Services = () => {
     }
   ];
 
-  const customServices = [
-    {
-      title: "Projet personnalisé",
-      description: "Une idée unique ? Contactez-nous pour un projet sur mesure.",
-      imageUrl: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
   return (
     <section id="services" className="section bg-[#F5F5F5]">
       <div className="container">
@@ -148,14 +139,12 @@ const Services = () => {
             <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
               Projets sur mesures
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <a href="#contact" className="col-span-full">
-                <ServiceCard
-                  title="Projet personnalisé"
-                  description="Une idée unique ? Contactez-nous pour un projet sur mesure adapté à vos besoins."
-                  imageUrl="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-                  category="Projets sur mesures"
-                />
+            <div className="flex justify-center">
+              <a 
+                href="#contact" 
+                className="btn btn-primary text-lg px-8 py-4 hover:scale-105 transition-transform"
+              >
+                Contactez-nous pour un projet personnalisé
               </a>
             </div>
           </div>
