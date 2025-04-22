@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 import useEmblaCarousel from 'embla-carousel-react';
+import VideoPlayer from './ui/video-player';
 import {
   Carousel,
   CarouselContent,
@@ -67,11 +68,13 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
   const renderContent = () => {
     if (videoUrl && isHovered) {
       return (
-        <iframe
-          src={getEmbedUrl(videoUrl)}
-          className="h-full w-full object-cover"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        <VideoPlayer
+          src={videoUrl}
+          className="h-full w-full"
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          showControls={false}
         />
       );
     }
