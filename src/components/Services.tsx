@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 import {
   Carousel,
@@ -15,10 +14,12 @@ interface ServiceCardProps {
   imageUrl: string | string[];
   videoUrl?: string;
   category: 'Merchandising' | 'Clip' | 'Projets sur mesures';
+  autoplay?: boolean;
 }
 
-const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autoplay = false }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const getEmbedUrl = (url: string) => {
     if (url.includes('youtu.be') || url.includes('youtube.com')) {
@@ -29,6 +30,26 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
     }
     return url;
   };
+
+  const nextSlide = useCallback(() => {
+    if (Array.isArray(imageUrl)) {
+      setCurrentSlide((prev) => (prev + 1) % imageUrl.length);
+    }
+  }, [imageUrl]);
+
+  useEffect(() => {
+    let intervalId: number | undefined;
+    
+    if (autoplay && Array.isArray(imageUrl)) {
+      intervalId = window.setInterval(() => {
+        nextSlide();
+      }, 3000);
+    }
+    
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [autoplay, imageUrl, nextSlide]);
 
   const renderContent = () => {
     if (videoUrl && isHovered) {
@@ -44,21 +65,28 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
 
     if (Array.isArray(imageUrl)) {
       return (
-        <Carousel className="w-full h-full relative">
-          <CarouselContent>
+        <div className="w-full h-full relative overflow-hidden">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out h-full"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
             {imageUrl.map((url, index) => (
-              <CarouselItem key={index}>
+              <div key={index} className="min-w-full h-full flex-shrink-0">
                 <img src={url} alt={`${title} ${index + 1}`} className="h-full w-full object-cover" />
-              </CarouselItem>
+              </div>
             ))}
-          </CarouselContent>
-          <CarouselPrevious 
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white" 
-          />
-          <CarouselNext 
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white" 
-          />
-        </Carousel>
+          </div>
+          
+          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+            {imageUrl.map((_, index) => (
+              <div 
+                key={index} 
+                className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`}
+                onClick={() => setCurrentSlide(index)}
+              />
+            ))}
+          </div>
+        </div>
       );
     }
 
@@ -100,6 +128,7 @@ const Services = () => {
         "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
         "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
       ],
+      autoplay: true,
     },
     {
       title: "Publicité vidéo",
