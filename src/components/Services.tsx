@@ -1,5 +1,7 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
+import useEmblaCarousel from 'embla-carousel-react';
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 interface ServiceCardProps {
   title: string;
@@ -20,6 +23,7 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autoplay = false }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
 
   const getEmbedUrl = (url: string) => {
     if (url.includes('youtu.be') || url.includes('youtube.com')) {
@@ -31,25 +35,35 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
     return url;
   };
 
-  const nextSlide = useCallback(() => {
-    if (Array.isArray(imageUrl)) {
-      setCurrentSlide((prev) => (prev + 1) % imageUrl.length);
-    }
-  }, [imageUrl]);
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setCurrentSlide(api.selectedScrollSnap());
+  }, [api]);
 
   useEffect(() => {
-    let intervalId: number | undefined;
+    if (!api) return;
     
-    if (autoplay && Array.isArray(imageUrl)) {
-      intervalId = window.setInterval(() => {
-        nextSlide();
-      }, 3000);
-    }
-    
+    api.on('select', onSelect);
     return () => {
-      if (intervalId) clearInterval(intervalId);
+      api.off('select', onSelect);
     };
-  }, [autoplay, imageUrl, nextSlide]);
+  }, [api, onSelect]);
+
+  useEffect(() => {
+    if (autoplay && Array.isArray(imageUrl) && api) {
+      const intervalId = window.setInterval(() => {
+        if (api.canScrollNext()) {
+          api.scrollNext();
+        } else {
+          api.scrollTo(0);
+        }
+      }, 3000);
+      
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [autoplay, imageUrl, api]);
 
   const renderContent = () => {
     if (videoUrl && isHovered) {
@@ -65,34 +79,35 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
 
     if (Array.isArray(imageUrl)) {
       return (
-        <div className="w-full h-full relative overflow-hidden">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out h-full"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
+        <Carousel setApi={setApi} className="w-full h-full">
+          <CarouselContent className="h-full">
             {imageUrl.map((url, index) => (
-              <div key={index} className="min-w-full h-full flex-shrink-0">
+              <CarouselItem key={index} className="h-full">
                 <img src={url} alt={`${title} ${index + 1}`} className="h-full w-full object-cover" />
-              </div>
+              </CarouselItem>
             ))}
-          </div>
+          </CarouselContent>
           
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+          <div className="absolute z-10 bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {imageUrl.map((_, index) => (
-              <button 
-                key={index} 
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  index === currentSlide ? 'w-4 bg-white' : 'w-1.5 bg-white/60 hover:bg-white/80'
+              <Button
+                key={index}
+                variant="ghost"
+                size="icon"
+                className={`p-0 h-1.5 min-w-0 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'w-4 bg-white hover:bg-white' 
+                    : 'w-1.5 bg-white/60 hover:bg-white/80'
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentSlide(index);
+                  api?.scrollTo(index);
                 }}
                 aria-label={`Aller à l'image ${index + 1}`}
               />
             ))}
           </div>
-        </div>
+        </Carousel>
       );
     }
 
