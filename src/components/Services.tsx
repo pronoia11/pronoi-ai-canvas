@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -88,6 +87,9 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
             ))}
           </CarouselContent>
           
+          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none" />
+          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none" />
+          
           <div className="absolute z-10 bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {imageUrl.map((_, index) => (
               <Button
@@ -170,7 +172,7 @@ const Services = () => {
       title: "Visualizer",
       description: "Animations réactives au son pour accompagner votre musique.",
       imageUrl: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      videoUrl: "https://example.com/visualizer-demo.mp4"
+      videoUrl: "https://stream.42videobricks.com/SjRXQk9DdkpGb21ycWJ0bQ==/stream"
     },
     {
       title: "Canvas Spotify",
@@ -189,12 +191,14 @@ const Services = () => {
   return (
     <section id="services" className="section bg-[#F5F5F5]">
       <div className="container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#2C2C2C]">Nos prestations</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-[#1E90FF] to-[#00BFFF] bg-clip-text text-transparent">
+          Nos prestations
+        </h2>
         
         <div className="space-y-24">
           {/* Merchandising Category */}
           <div className="mb-12 scroll-mt-24" id="merchandising">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF] drop-shadow-lg hover:scale-105 transition-transform">
               Merchandising
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -210,7 +214,7 @@ const Services = () => {
 
           {/* Clip Category */}
           <div className="mb-12 scroll-mt-24" id="clip">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF] drop-shadow-lg hover:scale-105 transition-transform">
               Clip
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -226,7 +230,7 @@ const Services = () => {
           
           {/* Custom Projects Category */}
           <div className="scroll-mt-24" id="custom-projects">
-            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF]">
+            <h3 className="text-3xl md:text-5xl font-bold mb-12 text-center text-[#1E90FF] drop-shadow-lg hover:scale-105 transition-transform">
               Projets sur mesures
             </h3>
             <div className="flex justify-center">
