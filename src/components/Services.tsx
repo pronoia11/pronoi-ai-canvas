@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { AspectRatio } from './ui/aspect-ratio';
 import {
@@ -43,7 +44,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
 
     if (Array.isArray(imageUrl)) {
       return (
-        <Carousel className="w-full">
+        <Carousel className="w-full h-full relative">
           <CarouselContent>
             {imageUrl.map((url, index) => (
               <CarouselItem key={index}>
@@ -51,8 +52,12 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselPrevious 
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white" 
+          />
+          <CarouselNext 
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white" 
+          />
         </Carousel>
       );
     }
