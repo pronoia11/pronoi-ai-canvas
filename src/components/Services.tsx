@@ -65,7 +65,7 @@ const Services = () => {
       title: "Tracklist IA",
       description: "Présentez votre tracklist de façon innovante.",
       imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      videoUrl: "https://example.com/tracklist-demo.mp4"
+      videoUrl: "https://youtu.be/emO1LvmaPlY"
     },
     {
       title: "Visualizer",
