@@ -1,5 +1,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import VideoPlayer from '@/components/ui/video-player';
 import {
@@ -10,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ServiceCardProps {
   title: string;
@@ -24,6 +26,12 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
   const [isHovered, setIsHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
+  const isMobile = useIsMobile();
+
+  const handleInteraction = () => {
+    if (!videoUrl) return;
+    setIsHovered(prev => !prev);
+  };
 
   const onSelect = useCallback(() => {
     if (!api) return;
@@ -32,7 +40,6 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
 
   useEffect(() => {
     if (!api) return;
-    
     api.on('select', onSelect);
     return () => {
       api.off('select', onSelect);
@@ -64,7 +71,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
           autoPlay={true}
           muted={true}
           loop={true}
-          showControls={false}
+          showControls={isMobile}
         />
       );
     }
@@ -112,8 +119,9 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
   return (
     <div 
       className="portfolio-item relative rounded-lg overflow-hidden shadow-md"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onClick={isMobile ? handleInteraction : undefined}
+      onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
+      onMouseLeave={!isMobile ? () => setIsHovered(false) : undefined}
     >
       <AspectRatio ratio={16 / 9}>
         {renderContent()}
@@ -128,3 +136,4 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
 };
 
 export default ServiceCard;
+

@@ -1,4 +1,3 @@
-
 import ServiceCard from './ServiceCard';
 
 const merchandisingServices = [
@@ -23,7 +22,7 @@ const merchandisingServices = [
     title: "Publicité vidéo",
     description: "Mettez en avant votre merch de façon différente.",
     imageUrl: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-very-close-shot-of-the-leaves-of-a-plant-wet-18310-large.mp4"
+    videoUrl: "https://youtu.be/emO1LvmaPlY"
   }
 ];
 
