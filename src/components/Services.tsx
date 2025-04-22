@@ -47,7 +47,12 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category }: Servi
 const Services = () => {
   const merchandisingServices = [
     {
-      title: "Merchandising",
+      title: "Photos produits",
+      description: "Des photos de qualité pour votre merchandising.",
+      imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Publicité vidéo",
       description: "Mettez en avant votre merch de façon différente.",
       imageUrl: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
       videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-very-close-shot-of-the-leaves-of-a-plant-wet-18310-large.mp4"
