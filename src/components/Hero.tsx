@@ -29,7 +29,7 @@ const Hero = () => {
         </h1>
 
         {/* Sous-texte */}
-        <div className="glass-panel-hero max-w-2xl w-full mb-8 md:text-2xl text-lg text-center font-semibold text-[#191c22] shadow-xl animate-fade-in animate-delay-200 my-[12px] px-[25px] rounded-3xl bg-black/0 py-[6px] mx-0">
+        <div className="glass-panel-hero max-w-2xl w-full mb-8 md:text-2xl text-lg text-center font-semibold text-[#191c22] shadow-xl animate-fade-in animate-delay-200 my-[12px] px-[25px] py-[6px] mx-0 bg-[#324bff]/[0.56] rounded-full">
           Studio créatif spécialisé dans la génération de visuels et d&apos;animations vidéo via l&apos;intelligence artificielle.
         </div>
 
