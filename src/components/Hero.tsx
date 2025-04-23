@@ -33,6 +33,14 @@ const Hero = () => {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-[#2C2C2C]">
           L'<span className="text-gradient glitch">IA</span> au service de votre <span className="text-gradient">imagination</span>
         </h1>
+        {/* Ajout du GIF juste en dessous du titre */}
+        <div className="flex justify-center mb-8 animate-fade-in">
+          <img
+            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXlmYTl5ajRndG9panUyYXFnMml2MW1zczAxdjJxaDR5dnd4YTg3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aECVcAuxVPluABf0d0/giphy.gif"
+            alt="Animation IA"
+            className="max-h-44 rounded-lg shadow-lg"
+          />
+        </div>
         <p className="text-xl md:text-2xl text-[#2C2C2C]/80 mb-8 max-w-2xl mx-auto">
           Studio créatif spécialisé dans la génération de visuels et d'animations vidéo via l'intelligence artificielle.
         </p>
