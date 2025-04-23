@@ -35,7 +35,7 @@ const Hero = () => {
 
         {/* Bouton call-to-action */}
         <a href="#services" className="mt-2 glass-btn font-bold px-8 py-4 text-base md:text-lg rounded-full inline-flex items-center gap-2 hover:scale-[1.045] transition-transform duration-300 hover:shadow-[0_2px_30px_rgba(30,144,255,0.32)] focus:outline-none focus-visible:ring-2 animate-fade-in animate-delay-400">
-          <span className="bg-gradient-to-r from-white/80 via-blue-100/90 to-blue-400/60 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(60,180,255,0.13)]">
+          <span className="bg-gradient-to-r from-white/80 via-blue-100/90 to-blue-400/60 bg-clip-text drop-shadow-[0_2px_10px_rgba(60,180,255,0.13)] text-inherit text-center">
             Découvrir nos services
           </span>
           {/* Lucide 'arrow-down' */}
