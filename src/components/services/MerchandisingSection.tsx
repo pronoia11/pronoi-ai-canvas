@@ -1,3 +1,4 @@
+
 import ServiceCard from './ServiceCard';
 
 const merchandisingServices = [
@@ -22,6 +23,7 @@ const merchandisingServices = [
     title: "Publicité vidéo",
     description: "Mettez en avant votre merch de façon différente.",
     imageUrl: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    gifUrl: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif", // <-- Ajoutez ici l'URL de votre GIF
     videoUrl: "https://youtu.be/emO1LvmaPlY"
   }
 ];
@@ -46,3 +48,4 @@ const MerchandisingSection = () => {
 };
 
 export default MerchandisingSection;
+

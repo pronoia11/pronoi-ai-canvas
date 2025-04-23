@@ -17,12 +17,13 @@ interface ServiceCardProps {
   title: string;
   description: string;
   imageUrl: string | string[];
+  gifUrl?: string;
   videoUrl?: string;
   category: 'Merchandising' | 'Clip' | 'Projets sur mesures';
   autoplay?: boolean;
 }
 
-const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autoplay = false }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, imageUrl, gifUrl, videoUrl, category, autoplay = false }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<ReturnType<typeof useEmblaCarousel>[1]>();
@@ -63,6 +64,7 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
   }, [autoplay, imageUrl, api]);
 
   const renderContent = () => {
+    // Afficher la vidéo YouTube quand hover/click et videoUrl présent
     if (videoUrl && isHovered) {
       return (
         <VideoPlayer
@@ -76,6 +78,14 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
       );
     }
 
+    // Afficher le GIF si disponible (quand il existe et pas hover sur la vidéo)
+    if (gifUrl) {
+      return (
+        <img src={gifUrl} alt={`${title} GIF`} className="h-full w-full object-cover" />
+      );
+    }
+
+    // Sinon le carrousel ou image normale
     if (Array.isArray(imageUrl)) {
       return (
         <Carousel setApi={setApi} className="w-full h-full">
@@ -86,10 +96,8 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
               </CarouselItem>
             ))}
           </CarouselContent>
-          
           <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none" />
           <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none" />
-          
           <div className="absolute z-10 bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {imageUrl.map((_, index) => (
               <Button
@@ -136,4 +144,3 @@ const ServiceCard = ({ title, description, imageUrl, videoUrl, category, autopla
 };
 
 export default ServiceCard;
-
