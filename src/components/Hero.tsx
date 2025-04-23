@@ -24,7 +24,7 @@ const Hero = () => {
           <span className="glow-text block">
             L<span className="text-blue-600">’IA </span>
             <span className="font-normal text-slate-700">au service de votre </span>
-            <span className="text-transparent bg-hero-gradient bg-clip-text">imagination</span>
+            <span className="bg-hero-gradient bg-clip-text text-7xl text-[#2000e6]/[0.57] font-extrabold">imagination</span>
           </span>
         </h1>
 
