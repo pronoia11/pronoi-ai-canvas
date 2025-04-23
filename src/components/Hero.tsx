@@ -23,8 +23,10 @@ const Hero = () => {
         <h1 className="glass-hero max-w-4xl mx-auto text-center text-[2.2rem] md:text-6xl lg:text-7xl font-bold leading-tight mb-8 tracking-tight animate-fade-in focus:outline-none focus-visible:ring-2" tabIndex={-1}>
           <span className="glow-text block">
             L<span className="text-blue-600">’IA </span>
-            <span className="font-normal text-slate-700">au service de votre </span>
-            <span className="bg-hero-gradient bg-clip-text text-7xl text-[#2000e6]/[0.57] font-extrabold">imagination</span>
+            <span className="font-normal text-slate-700 text-6xl">au service de votre
+imagination
+          </span>
+            
           </span>
         </h1>
 
