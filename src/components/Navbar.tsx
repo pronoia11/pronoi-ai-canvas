@@ -1,9 +1,6 @@
-
 import { useEffect, useState } from "react";
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
@@ -11,19 +8,12 @@ const Navbar = () => {
         setScrolled(isScrolled);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrolled]);
-
-  return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 ${
-        scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : ""
-      }`}
-    >
+  return <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 ${scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : ""}`}>
       <div className="container px-6 flex items-center justify-between">
         <div className="text-2xl font-bold font-poppins text-[#2C2C2C]">
           PRONOÏA
@@ -32,8 +22,8 @@ const Navbar = () => {
           <ul className="flex space-x-8">
             <li><a href="#home" className="nav-link text-[#2C2C2C]/80 hover:text-[#1E90FF]">Accueil</a></li>
             <li><a href="#services" className="nav-link text-[#2C2C2C]/80 hover:text-[#1E90FF]">Prestations</a></li>
-            <li><a href="#portfolio" className="nav-link text-[#2C2C2C]/80 hover:text-[#1E90FF]">Portfolio</a></li>
-            <li><a href="#about" className="nav-link text-[#2C2C2C]/80 hover:text-[#1E90FF]">À propos</a></li>
+            
+            
             <li><a href="#contact" className="nav-link text-[#2C2C2C]/80 hover:text-[#1E90FF]">Contact</a></li>
           </ul>
         </nav>
@@ -47,8 +37,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Navbar;
