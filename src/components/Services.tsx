@@ -1,6 +1,7 @@
 
 import { ServiceCategory } from './services/AccordionService';
 import AccordionService from './services/AccordionService';
+import { motion } from 'framer-motion';
 
 const serviceCategories: ServiceCategory[] = [
   {
