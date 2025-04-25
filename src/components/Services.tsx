@@ -64,9 +64,7 @@ const Services = () => {
         y: -5
       }} whileTap={{
         scale: 0.95
-      }} className="mt-12 mx-auto block glass-btn px-8 py-4 text-lg font-semibold hover:scale-105 hover:-translate-y-1 text-justify">
-          Discuter de votre projet sur mesure
-        </motion.button>
+      }} className="mt-12 mx-auto block glass-btn px-8 py-4 text-lg font-semibold hover:scale-105 hover:-translate-y-1 text-justify">Discutons de votre projet !</motion.button>
       </div>
     </section>;
 };
