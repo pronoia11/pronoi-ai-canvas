@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -27,7 +26,7 @@ interface AccordionServiceProps {
 }
 
 const AccordionService = ({ categories }: AccordionServiceProps) => {
-  const [openCategory, setOpenCategory] = useState<string | null>(categories[0]?.id || null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   
   return (
     <div className="space-y-8">
@@ -73,7 +72,6 @@ const AccordionService = ({ categories }: AccordionServiceProps) => {
   );
 };
 
-// Composant pour les sous-services (avec contenu dépliable)
 const SubServiceItem = ({ 
   service, 
   isLast 
