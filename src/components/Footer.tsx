@@ -1,32 +1,55 @@
 
-import { Instagram } from 'lucide-react';
+import { Mail, Phone, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-[#D0E8FF] py-12 border-t border-[#1E90FF]/10">
       <div className="container px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          {/* Logo and Description */}
+          <div className="space-y-3">
             <div className="text-2xl font-bold font-poppins text-[#2C2C2C]">PRONOÏA</div>
-            <p className="text-[#2C2C2C]/70 mt-2">L'IA au service de votre imagination.</p>
+            <p className="text-[#2C2C2C]/70">L'IA au service de votre imagination.</p>
           </div>
           
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex space-x-4 mb-4">
+          {/* Contact Information */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-[#2C2C2C]">Contactez-nous</h3>
+            <div className="space-y-3">
+              <a 
+                href="mailto:contactpronoiaweb@gmail.com" 
+                className="flex items-center space-x-2 text-[#2C2C2C]/70 hover:text-[#1E90FF] transition-colors group"
+              >
+                <Mail className="w-5 h-5 group-hover:text-[#1E90FF]" />
+                <span>contactpronoiaweb@gmail.com</span>
+              </a>
+              <a 
+                href="https://wa.me/33756847500" 
+                className="flex items-center space-x-2 text-[#2C2C2C]/70 hover:text-[#1E90FF] transition-colors group"
+              >
+                <Phone className="w-5 h-5 group-hover:text-[#1E90FF]" />
+                <span>+33 7 56 84 75 59</span>
+              </a>
+            </div>
+          </div>
+          
+          {/* Social and Legal */}
+          <div className="space-y-4">
+            <div className="flex space-x-4">
               <a 
                 href="https://www.instagram.com/pronoia_artist/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-[#2C2C2C]/70 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
+                className="bg-white/80 p-2 rounded-full hover:bg-[#1E90FF] text-[#2C2C2C]/70 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.tiktok.com/@prono.ia0" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-[#2C2C2C]/70 hover:text-[#1E90FF] hover:drop-shadow-[0_0_8px_rgba(30,144,255,0.6)] transition-all"
+                className="bg-white/80 p-2 rounded-full hover:bg-[#1E90FF] text-[#2C2C2C]/70 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                 aria-label="TikTok"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,11 +61,11 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-            <div className="text-[#2C2C2C]/60 text-sm">
+            <div className="text-[#2C2C2C]/60 text-sm space-x-2">
               <a href="#" className="hover:text-[#1E90FF] transition-colors">
                 Mentions légales
               </a>
-              <span className="mx-2">|</span>
+              <span>|</span>
               <span>© {new Date().getFullYear()} Pronoïa. Tous droits réservés.</span>
             </div>
           </div>
