@@ -44,9 +44,7 @@ const Hero = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.2
-      }} className="text-3xl lg:text-5xl font-bold text-center mb-6 hero-text-gradient text-pronoia-blue md:text-8xl">
-          L&apos;IA au service de votre imagination
-        </motion.h1>
+      }} className="text-3xl lg:text-5xl mb-6 hero-text-gradient text-pronoia-blue font-bold mx-[47px] my-[32px] py-[93px] px-[240px] md:text-8xl text-center">L'IA au service de votre imagination</motion.h1>
 
         <motion.div initial={{
         opacity: 0,
