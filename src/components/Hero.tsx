@@ -97,7 +97,7 @@ const Hero = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.3
-      }} className="text-white text-shadow-sm max-w-2xl mb-8 md:text-2xl text-lg text-center font-semibold my-[8px] mx-0">
+      }} className="text-shadow-sm max-w-2xl mb-8 md:text-2xl text-center font-semibold my-[8px] mx-0 text-[pronoia-light-gray] text-slate-300">
           Studio créatif spécialisé dans la génération de visuels et d&apos;animations vidéo via l&apos;intelligence artificielle.
         </motion.p>
 
