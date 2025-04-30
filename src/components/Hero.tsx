@@ -84,9 +84,9 @@ const Hero = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.2
-      }} className="text-3xl lg:text-5xl mb-6 hero-text-gradient text-pronoia-blue font-bold mx-[47px] text-center my-[16px] px-[170px] py-[32px] md:text-8xl">L'IA au service de votre imagination</motion.h1>
+      }} className="text-3xl lg:text-5xl mb-3 hero-text-gradient text-pronoia-blue font-bold mx-[47px] text-center my-[16px] px-[170px] py-[32px] md:text-8xl">L'IA au service de votre imagination</motion.h1>
 
-        <motion.div ref={tiltRef} initial={{
+        <motion.p ref={tiltRef} initial={{
         opacity: 0,
         y: 15,
         filter: "blur(3px)"
@@ -97,9 +97,9 @@ const Hero = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.3
-      }} className="glass-panel-hero max-w-2xl w-full mb-8 md:text-2xl text-lg text-center font-semibold text-[#191c22] my-[12px] px-[25px] py-[6px] mx-0">
+      }} className="text-white text-shadow-sm max-w-2xl mb-8 md:text-2xl text-lg text-center font-semibold my-[8px] mx-0">
           Studio créatif spécialisé dans la génération de visuels et d&apos;animations vidéo via l&apos;intelligence artificielle.
-        </motion.div>
+        </motion.p>
 
         <motion.a href="#services" initial={{
         opacity: 0,
