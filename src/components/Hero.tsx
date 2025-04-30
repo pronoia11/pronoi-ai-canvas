@@ -1,12 +1,51 @@
-import { useEffect, useState } from "react";
+
+import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import VanillaTilt from "vanilla-tilt";
+
 const HERO_GIF = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanVibzQ2dTl4anVpN2Rmc2Zzc2JqaXp2aXZ1c2g0dTQzNmthcmt5bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1sus3HqohKeZTZyDNT/giphy.gif";
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const tiltRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setIsLoaded(true);
-  }, []);
+    
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    // Initialize vanilla-tilt only on desktop
+    if (tiltRef.current && !isMobile) {
+      VanillaTilt.init(tiltRef.current, {
+        max: 10, // maximum tilt rotation (degrees)
+        speed: 400, // speed of the tilt animation
+        glare: true, // enable glare effect
+        "max-glare": 0.2, // maximum glare opacity
+        scale: 1.03, // slight scale effect on hover
+        gyroscope: false, // don't use gyroscope on mobile
+        perspective: 1000, // perspective value for 3D effect
+        transition: true, // smooth transition
+        easing: "cubic-bezier(.03,.98,.52,.99)"
+      });
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      // Clean up the tilt effect
+      if (tiltRef.current && tiltRef.current.vanillaTilt) {
+        tiltRef.current.vanillaTilt.destroy();
+      }
+    };
+  }, [isMobile]);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -15,6 +54,7 @@ const Hero = () => {
       });
     }
   };
+
   return <section id="home" className="h-screen min-h-[620px] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
         <img src={HERO_GIF} alt="background gif IA" className="w-full h-full object-cover" style={{
@@ -46,18 +86,24 @@ const Hero = () => {
         delay: 0.2
       }} className="text-3xl lg:text-5xl mb-6 hero-text-gradient text-pronoia-blue font-bold mx-[47px] text-center my-[16px] px-[170px] py-[61px] md:text-7xl">L'IA au service de votre imagination</motion.h1>
 
-        <motion.div initial={{
-        opacity: 0,
-        y: 15,
-        filter: "blur(3px)"
-      }} animate={{
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)"
-      }} transition={{
-        duration: 0.6,
-        delay: 0.3
-      }} className="glass-panel-hero max-w-2xl w-full mb-8 md:text-2xl text-lg text-center font-semibold text-[#191c22] my-[12px] px-[25px] py-[6px] mx-0">
+        <motion.div 
+          ref={tiltRef}
+          initial={{
+            opacity: 0,
+            y: 15,
+            filter: "blur(3px)"
+          }} 
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)"
+          }} 
+          transition={{
+            duration: 0.6,
+            delay: 0.3
+          }} 
+          className="glass-panel-hero max-w-2xl w-full mb-8 md:text-2xl text-lg text-center font-semibold text-[#191c22] my-[12px] px-[25px] py-[6px] mx-0"
+        >
           Studio créatif spécialisé dans la génération de visuels et d&apos;animations vidéo via l&apos;intelligence artificielle.
         </motion.div>
 
