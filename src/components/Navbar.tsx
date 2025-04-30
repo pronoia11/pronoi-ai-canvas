@@ -1,13 +1,10 @@
-
 import { useEffect, useState, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const navLinksRef = useRef<HTMLUListElement>(null);
-
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
@@ -15,12 +12,11 @@ const Navbar = () => {
         setScrolled(isScrolled);
       }
     };
-    
+
     // Check if device is mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
     checkMobile();
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", checkMobile);
@@ -37,15 +33,14 @@ const Navbar = () => {
           scale: 1.05,
           perspective: 800,
           transition: true,
-          easing: "cubic-bezier(.03,.98,.52,.99)",
+          easing: "cubic-bezier(.03,.98,.52,.99)"
         });
       });
     }
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkMobile);
-      
+
       // Clean up tilt effect
       if (navLinksRef.current && !isMobile) {
         const navItems = navLinksRef.current.querySelectorAll('a');
@@ -57,35 +52,36 @@ const Navbar = () => {
       }
     };
   }, [scrolled, isMobile]);
-
   return <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 ${scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : ""}`}>
-      <div className="container px-6 flex items-center justify-between">
-        <div className="text-2xl font-bold font-poppins text-[#2C2C2C]">
+      <div className="container px-6 flex items-center justify-between bg-transparent">
+        <div className="glass-btn inline-block px-4 py-2 rounded-full text-white font-semibold transition-all duration-300 hover:scale-105">
           PRONOÏA
         </div>
         <nav className="hidden md:block">
-          <motion.ul 
-            ref={navLinksRef}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, staggerChildren: 0.1 }}
-            className="flex space-x-4"
-          >
-            {['Accueil', 'Prestations', 'Contact'].map((item, index) => (
-              <motion.li 
-                key={index}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <a 
-                  href={`#${item === 'Accueil' ? 'home' : item === 'Prestations' ? 'services' : 'contact'}`} 
-                  className="glass-btn inline-block px-4 py-2 rounded-full text-white font-semibold transition-all duration-300 hover:scale-105"
-                >
+          <motion.ul ref={navLinksRef} initial={{
+          opacity: 0,
+          y: -10
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5,
+          staggerChildren: 0.1
+        }} className="flex space-x-4">
+            {['Accueil', 'Prestations', 'Contact'].map((item, index) => <motion.li key={index} initial={{
+            opacity: 0,
+            y: -10
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.3,
+            delay: index * 0.1
+          }}>
+                <a href={`#${item === 'Accueil' ? 'home' : item === 'Prestations' ? 'services' : 'contact'}`} className="glass-btn inline-block px-4 py-2 rounded-full text-white font-semibold transition-all duration-300 hover:scale-105">
                   {item}
                 </a>
-              </motion.li>
-            ))}
+              </motion.li>)}
           </motion.ul>
         </nav>
         <div className="md:hidden">
@@ -100,5 +96,4 @@ const Navbar = () => {
       </div>
     </header>;
 };
-
 export default Navbar;
